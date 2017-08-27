@@ -3,6 +3,8 @@
         .card
             .card-header
                 h3.card-header-title {{ product.name }}
+            .card-image
+                img(:src="mainImage")
             .card-content
                 p {{ product.description }}
             .card-footer
@@ -16,8 +18,10 @@
             }
         },
 
+
         props: [
-            'product'
+            'product',
+            'mainImage'
         ],
 
         created () {
