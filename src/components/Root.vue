@@ -22,7 +22,7 @@
                     product.column(v-for="product in products",
                         @addToCart="addToCart",
                         :product="product",
-                        :mainImage="")
+                        :mainImage="mainProductImage(product)")
 
                 .products(v-else)
                     h2 have not products
@@ -37,7 +37,7 @@ import Product from './Product.vue'
 import Cart from './Cart.vue'
 import Flash from './Flash.vue'
 import Loading from './Loading.vue'
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
     name: 'root',
@@ -60,6 +60,23 @@ export default {
             'resolveActiveFlashes'
         ]),
 
+        // accessing the relation here, at the marshalling layer
+        mainProductImage (product) {
+            let mi = product.relationships.main_image
+
+            if (mi) {
+                let image = this.main_images[mi.data.id]
+
+                if (image)
+                    return image.link.href
+
+                else return ""
+
+            } else {
+                return ""
+            }
+        },
+
         doFlash (msg, type) {
             this.flash({ msg, type })
             this.flashShowing = true
@@ -79,8 +96,12 @@ export default {
             'products',
             'cartItems',
             'cartMeta',
-            'activeFlashes'
+            'activeFlashes',
         ]),
+
+        ...mapGetters([
+            'main_images'
+        ])
     },
 
     components: {
