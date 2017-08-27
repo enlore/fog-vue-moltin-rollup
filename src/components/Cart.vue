@@ -1,11 +1,11 @@
 <template lang="pug">
     .cart
-        table.table.is-striped.cart-products(v-if="cartProducts.length > 0")
+        table.table.is-fullwidth.is-striped.cart-products(v-if="cartProducts.length > 0")
             thead
                 tr
                     th
-                    th Quantity
-                    th Price
+                    th.has-text-centered Quantity
+                    th.has-text-right Price
             tbody
                 product-as-line-item(v-for="product in cartProducts", :product="product", :quantity="product.quantity", :price="product.unit_price.amount")
 
@@ -51,6 +51,10 @@
 </script>
 
 <style lang="sass" scoped>
+.cart-products
+    @media (min-width: 1024px)
+        max-width: 60%
+
 .cart-checkoutControl
     padding: 8px
     display: block
