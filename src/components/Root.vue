@@ -19,7 +19,11 @@
         .section
             .container
                 .products.columns(v-if="products.length > 0")
-                    product.column(@addToCart="addToCart", v-for="product in products", :product="product")
+                    product.column(v-for="product in products",
+                        @addToCart="addToCart",
+                        :product="product",
+                        :mainImage="")
+
                 .products(v-else)
                     h2 have not products
 
