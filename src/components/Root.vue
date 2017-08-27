@@ -58,6 +58,7 @@ export default {
     @import '../../node_modules/bulma/sass/grid/all'
     @import '../../node_modules/bulma/sass/layout/all'
     @import '../../node_modules/bulma/sass/elements/title'
+    @import '../../node_modules/bulma/sass/elements/table'
     @import '../../node_modules/bulma/sass/components/card'
 
     .siteHeader

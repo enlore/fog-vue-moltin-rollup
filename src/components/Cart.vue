@@ -1,7 +1,20 @@
 <template lang="pug">
     .cart
-        .cart-products(v-if="cartProducts.length > 0")
-            product-as-line-item(v-for="product in cartProducts", :product="product", :quantity="product.quantity")
+        table.table.is-striped.cart-products(v-if="cartProducts.length > 0")
+            thead
+                tr
+                    th
+                    th Quantity
+                    th Price
+            tbody
+                product-as-line-item(v-for="product in cartProducts", :product="product", :quantity="product.quantity", :price="product.unit_price.amount")
+
+            tfoot
+                tr
+                    td
+                    td.has-text-right.has-text-black Total
+                    td {{ meta.display_price.with_tax.formatted }}
+
 
         .cart-products(v-else)
             h3 Nothing in your cart

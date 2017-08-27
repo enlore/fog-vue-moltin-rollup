@@ -1,7 +1,16 @@
 <template lang="pug">
-    .productAsLineItem
-        p {{ product.name }}
-        p {{ quantity }}
+    tr.productAsLineItem
+        td
+            a.productAsLineItem-removeControl x
+            span.productAsLineItem-name {{ product.name }}
+
+        td
+            .has-text-centered {{ quantity }}
+
+            .productAsLineItem-controls
+                a.productAsLineItem-quantityControl() -
+                a.productAsLineItem-quantityControl() +
+        td {{ price }}
 </template>
 
 <script>
@@ -14,11 +23,28 @@
 
         props: [
             'product',
-            'quantity'
+            'quantity',
+            'price'
         ]
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
+.productAsLineItem-controls
+    display: flex
+
+.productAsLineItem-removeControl
+    padding: 4px
+    font-size: 20px
+    margin-right: 8px
+
+.productAsLineItem-removeControl
+
+.productAsLineItem-quantityControl
+    flex: 1 1 auto
+    display: block
+    text-align: center
+    padding: 4px
+    font-size: 24px
 </style>
 
