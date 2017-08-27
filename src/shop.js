@@ -16,7 +16,7 @@ class Shop {
     }
 
     getProducts (offset, limit) {
-        return this.client.Products.All()
+        return this.client.Products.With('files, main_images').All()
             .then(products => {
                 return products
             })
