@@ -44,12 +44,12 @@
 
         computed: {
             cartProducts () {
-                return this.products
+                return this.items
             }
         },
 
         props: [
-            'products',
+            'items',
             'meta'
         ],
 

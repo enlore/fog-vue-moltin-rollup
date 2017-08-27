@@ -11,7 +11,7 @@
                     @incrementItem="incrementItem",
                     @decrementItem="decrementItem",
                     @removeItem="removeItem",
-                    :products="cartItems",
+                    :items="cartItems",
                     :meta="cartMeta")
 
         .section
