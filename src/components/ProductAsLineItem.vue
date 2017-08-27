@@ -8,8 +8,8 @@
             .has-text-centered {{ quantity }}
 
             .productAsLineItem-controls
-                a.productAsLineItem-quantityControl(@click="$emit('decrementItem', id)") -
-                a.productAsLineItem-quantityControl(@click="$emit('incrementItem', id)") +
+                a.productAsLineItem-quantityControl(@click="$emit('decrementItem', productId)") -
+                a.productAsLineItem-quantityControl(@click="$emit('incrementItem', productId)") +
 
         td.has-text-right {{ price }}
 </template>
@@ -24,6 +24,7 @@
 
         props: [
             'id',
+            'productId',
             'name',
             'quantity',
             'price'

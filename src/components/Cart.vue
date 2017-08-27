@@ -12,6 +12,7 @@
                     @decrementItem="$emit('decrementItem', arguments[0])",
                     @removeItem="$emit('removeItem', arguments[0])",
                     :id="product.id",
+                    :productId="product.product_id",
                     :name="product.name",
                     :quantity="product.quantity",
                     :price="product.unit_price.amount")
