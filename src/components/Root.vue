@@ -8,9 +8,11 @@
         .section
             .container
                 cart(
+                    @refreshItems="getCartItems",
                     @incrementItem="incrementItem",
                     @decrementItem="decrementItem",
                     @removeItem="removeItem",
+                    @deleteCart="deleteCart",
                     :items="cartItems",
                     :meta="cartMeta")
 
@@ -41,7 +43,9 @@ export default {
             'addToCart',
             'incrementItem',
             'decrementItem',
-            'removeItem'
+            'removeItem',
+            'getCartItems',
+            'deleteCart'
         ]),
     },
 

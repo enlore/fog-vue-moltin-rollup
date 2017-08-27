@@ -4,6 +4,7 @@
             thead
                 tr
                     th
+                        a.cart-refreshControl(@click="$emit('refreshItems')") &#x21BB;
                     th.has-text-centered Quantity
                     th.has-text-right Price
             tbody
@@ -21,8 +22,11 @@
                 tr
                     td
                         a.cart-checkoutControl Checkout
+                        a.cart-checkoutControl(@click="$emit('deleteCart')") Empty
+
                     td.has-text-right.has-text-black
                         .cart-padded Total
+
                     td
                         .cart-padded.has-text-right {{ meta.display_price.with_tax.formatted }}
 
@@ -45,7 +49,7 @@
 
         computed: {
             cartProducts () {
-                return this.items
+                return this.items.sort((a, b) => a.name > b.name)
             }
         },
 
@@ -65,9 +69,15 @@
     @media (min-width: 1024px)
         max-width: 60%
 
+.cart-refreshControl
+    font-size: 22px
+
 .cart-checkoutControl
     padding: 8px
-    display: block
+    display: inline-block
+
+.cart-checkoutControl:first-child
+    margin-right: 4px
 
 .cart-padded
     padding: 8px

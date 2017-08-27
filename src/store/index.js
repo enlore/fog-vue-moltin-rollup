@@ -13,6 +13,16 @@ const actions = {
             })
     },
 
+    deleteCart ({ commit, dispatch }) {
+        Vue.$shop.deleteCart()
+            .then(deletedCartMeta => {
+                dispatch('getCartItems')
+            })
+            .catch(err => {
+                commit('commitError', err)
+            })
+    },
+
     addToCart ({ commit }, product) {
         Vue.$shop.addToCart(product.id, 1)
             .then(cartProduct => {

@@ -1,4 +1,6 @@
 /* jshint node: true, asi: true, laxcomma: true, esversion: 6 */
+/* globals window: true */
+
 'use strict'
 
 //import M from '@moltin/sdk'
@@ -31,8 +33,8 @@ class Shop {
         return this.client.Cart.Items()
     }
 
-    emptyCart () {
-
+    deleteCart () {
+        return this.client.Cart.Delete()
     }
 
     removeItem (itemId) {
