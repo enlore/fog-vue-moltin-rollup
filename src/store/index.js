@@ -28,11 +28,10 @@ const actions = {
             })
     },
 
-    removeItem({ commit }, productId) {
-        console.info('removeItem ~~ productId', productId)
+    removeItem({ commit, dispatch }, productId) {
         Vue.$shop.removeItem(productId)
-            .then(arg => {
-                console.info(arg)
+            .then(removedItem => {
+                return dispatch('getCartItems')
             })
             .catch(err => {
                 commit('commitError', err)
