@@ -12,8 +12,11 @@
             tfoot
                 tr
                     td
-                    td.has-text-right.has-text-black Total
-                    td {{ meta.display_price.with_tax.formatted }}
+                        a.cart-checkoutControl Checkout
+                    td.has-text-right.has-text-black
+                        .cart-padded Total
+                    td
+                        .cart-padded.has-text-right {{ meta.display_price.with_tax.formatted }}
 
 
         .cart-products(v-else)
@@ -47,6 +50,12 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
+.cart-checkoutControl
+    padding: 8px
+    display: block
+
+.cart-padded
+    padding: 8px
 </style>
 

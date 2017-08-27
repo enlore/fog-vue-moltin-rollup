@@ -10,7 +10,8 @@
             .productAsLineItem-controls
                 a.productAsLineItem-quantityControl() -
                 a.productAsLineItem-quantityControl() +
-        td {{ price }}
+
+        td.has-text-right {{ price }}
 </template>
 
 <script>
