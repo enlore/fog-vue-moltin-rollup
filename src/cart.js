@@ -20,8 +20,8 @@ class Shop {
             })
     }
 
-    addToCart (product, count) {
-        return this.client.Cart.AddProduct(product.id, count)
+    addToCart (productId, count) {
+        return this.client.Cart.AddProduct(productId, count)
             .then(item => {
                 return item
             })
@@ -35,8 +35,8 @@ class Shop {
 
     }
 
-    removeCartItem (itemId) {
-
+    removeItem (itemId) {
+        return this.client.Cart.RemoveItem(itemId)
     }
 
     createOrder (customer, billingAddress, shippingAddress) {

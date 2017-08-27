@@ -14,7 +14,7 @@ const actions = {
     },
 
     addToCart ({ commit }, product) {
-        Vue.$shop.addToCart(product, 1)
+        Vue.$shop.addToCart(product.id, 1)
             .then(cartProduct => {
                 console.info(cartProduct)
                 return Vue.$shop.getCartItems()
@@ -30,10 +30,17 @@ const actions = {
 
     removeItem({ commit }, productId) {
         console.info('removeItem ~~ productId', productId)
+        Vue.$shop.removeItem(productId)
+            .then(arg => {
+                console.info(arg)
+            })
+            .catch(err => {
+                commit('commitError', err)
+            })
     },
 
-    incrementItem({ commit }, productId) {
-
+    incrementItem({ dispatch }, productId) {
+        return dispatch('addToCart', { id: productId })
     },
 
     decrementItem({ commit }, productId) {
