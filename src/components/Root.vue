@@ -10,7 +10,7 @@
                 cart(
                     @refreshItems="getCartItems",
                     @incrementItem="incrementItem",
-                    @decrementItem="decrementItem",
+                    @decrementItem="doFlash('://TODO', 'huge')",
                     @removeItem="removeItem",
                     @deleteCart="deleteCart",
                     :items="cartItems",
@@ -23,11 +23,14 @@
                 .products(v-else)
                     h2 have not products
 
+        flash(:show="flashShowing", :flashes="activeFlashes")
+
 </template>
 
 <script>
 import Product from './Product.vue'
 import Cart from './Cart.vue'
+import Flash from './Flash.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default {
@@ -35,6 +38,7 @@ export default {
 
     data () {
         return {
+            flashShowing: false
         }
     },
 
@@ -45,21 +49,38 @@ export default {
             'decrementItem',
             'removeItem',
             'getCartItems',
-            'deleteCart'
+            'deleteCart',
+            'flash',
+            'resolveActiveFlashes'
         ]),
+
+        doFlash (msg, type) {
+            this.flash({ msg, type })
+            this.flashShowing = true
+
+            let to = setTimeout(() => {
+                if (to) {
+                    clearTimeout(to)
+                    to = null }
+                this.flashShowing = false
+                this.resolveActiveFlashes()
+            }, 2000)
+        },
     },
 
     computed: {
         ...mapState([
             'products',
             'cartItems',
-            'cartMeta'
+            'cartMeta',
+            'activeFlashes'
         ]),
     },
 
     components: {
         Product,
-        Cart
+        Cart,
+        Flash
     }
 }
 </script>

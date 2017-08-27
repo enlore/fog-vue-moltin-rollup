@@ -65,6 +65,15 @@ const actions = {
             .catch(err => {
                 commit('commitError', err)
             })
+    },
+
+    flash ({ commit }, { msg, type }) {
+        commit('commitFlash', { msg, type })
+        commit('activeFlash', { msg, type })
+    },
+
+    resolveActiveFlashes ({ commit }) {
+        commit('resolveActiveFlashes')
     }
 }
 
@@ -85,10 +94,24 @@ const mutations = {
         state.cartMeta = meta
     },
 
-    commitError (state, err) {
-        Vue.set(state.errors, state.idx, err)
+    commitError (state, error) {
+        Vue.set(state.errors, state.idx, { error, resolved: false })
         state.idx = (state.idx + 1) % 100
         state.errorCount += 1
+    },
+
+    commitFlash (state, flash) {
+        Vue.set(state.flashes, state.flashIdx, { flash, resolved: false })
+        state.flashIdx = (state.flashIdx + 1) % 100
+        state.flashCount += 1
+    },
+
+    activeFlash (state, flash) {
+        state.activeFlashes.push(flash)
+    },
+
+    resolveActiveFlashes (state) {
+        state.activeFlashes = []
     }
 }
 
@@ -96,12 +119,16 @@ Vue.use(Vuex)
 
 const state = {
     idx: 0,
+    flashIdx: 0,
     cartItems: [],
     cartMeta: {},
     products: [],
     pages: [],
     errors: [],
-    errorCount: 0
+    flashes: [],
+    activeFlashes: [],
+    errorCount: 0,
+    flashCount: 0
 }
 
 const store = new Vuex.Store({
