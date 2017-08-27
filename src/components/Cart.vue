@@ -1,7 +1,7 @@
 <template lang="pug">
     .cart
         .cart-products(v-if="cartProducts.length > 0")
-            product-as-line-item(v-for="product in cartProducts", :product="product", qty="3")
+            product-as-line-item(v-for="product in cartProducts", :product="product", :quantity="product.quantity")
         .cart-products(v-else)
             h3 Nothing in your cart
 </template>

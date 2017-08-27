@@ -1,7 +1,7 @@
 <template lang="pug">
     .productAsLineItem
         p {{ product.name }}
-        p {{ qty }}
+        p {{ quantity }}
 </template>
 
 <script>
@@ -14,7 +14,7 @@
 
         props: [
             'product',
-            'qty'
+            'quantity'
         ]
     }
 </script>
