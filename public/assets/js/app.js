@@ -7614,7 +7614,7 @@ var Product = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=
     }
 };
 
-var ProductAsLineItem = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"productAsLineItem"},[_c('p',[_vm._v(_vm._s(_vm.product.name))]),_c('p',[_vm._v(_vm._s(_vm.qty))])])},staticRenderFns: [],_scopeId: 'data-v-7e9319c8',
+var ProductAsLineItem = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('tr',{staticClass:"productAsLineItem"},[_c('td',[_c('a',{staticClass:"productAsLineItem-removeControl"},[_vm._v("x")]),_c('span',{staticClass:"productAsLineItem-name"},[_vm._v(_vm._s(_vm.product.name))])]),_c('td',[_c('div',{staticClass:"has-text-centered"},[_vm._v(_vm._s(_vm.quantity))]),_vm._m(0)]),_c('td',[_vm._v(_vm._s(_vm.price))])])},staticRenderFns: [function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"productAsLineItem-controls"},[_c('a',{staticClass:"productAsLineItem-quantityControl"},[_vm._v("-")]),_c('a',{staticClass:"productAsLineItem-quantityControl"},[_vm._v("+")])])}],_scopeId: 'data-v-7e9319c8',
     data: function data () {
         return {
 
@@ -7623,11 +7623,12 @@ var ProductAsLineItem = {render: function(){var _vm=this;var _h=_vm.$createEleme
 
     props: [
         'product',
-        'qty'
+        'quantity',
+        'price'
     ]
 };
 
-var Cart = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"cart"},[(_vm.cartProducts.length > 0)?_c('div',{staticClass:"cart-products"},_vm._l((_vm.cartProducts),function(product){return _c('product-as-line-item',{attrs:{"product":product,"qty":"3"}})})):_c('div',{staticClass:"cart-products"},[_c('h3',[_vm._v("Nothing in your cart")])])])},staticRenderFns: [],_scopeId: 'data-v-530ad160',
+var Cart = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"cart"},[(_vm.cartProducts.length > 0)?_c('table',{staticClass:"table is-striped cart-products"},[_vm._m(0),_c('tbody',_vm._l((_vm.cartProducts),function(product){return _c('product-as-line-item',{attrs:{"product":product,"quantity":product.quantity,"price":product.unit_price.amount}})})),_c('tfoot',[_c('tr',[_c('td'),_c('td',{staticClass:"has-text-right has-text-black"},[_vm._v("Total")]),_c('td',[_vm._v(_vm._s(_vm.meta.display_price.with_tax.formatted))])])])]):_c('div',{staticClass:"cart-products"},[_c('h3',[_vm._v("Nothing in your cart")])])])},staticRenderFns: [function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',[_c('tr',[_c('th'),_c('th',[_vm._v("Quantity")]),_c('th',[_vm._v("Price")])])])}],_scopeId: 'data-v-530ad160',
     data: function data () {
         return {
 
