@@ -1,6 +1,6 @@
-# my-project
+# Moltin Powered Ecomm Template Project
 
-> A Vue.js project
+> a `fog-tools` app template
 
 ## Build setup
 
