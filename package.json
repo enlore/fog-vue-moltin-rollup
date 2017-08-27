@@ -14,14 +14,15 @@
   "dependencies": {
     "@moltin/sdk": "^2.5.2",
     "bulma": "^0.5.1",
-    "node-sass": "^4.5.3",
-    "pug": "^2.0.0-rc.3",
+    "lodash": "^4.17.4",
     "vue": "^2.3.3",
     "vue-router": "^2.5.3",
     "vuex": "^2.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
+    "node-sass": "^4.5.3",
+    "pug": "^2.0.0-rc.3",
     "babel-core": "^6.24.1",
     "cross-env": "^5.0.0",
     "cssnano-cli": "^1.0.4",
