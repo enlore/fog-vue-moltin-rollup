@@ -24,6 +24,7 @@
                     h2 have not products
 
         flash(:show="flashShowing", :flashes="activeFlashes")
+        loading(:show="true", :spin="true")
 
 </template>
 
@@ -31,6 +32,7 @@
 import Product from './Product.vue'
 import Cart from './Cart.vue'
 import Flash from './Flash.vue'
+import Loading from './Loading.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default {
@@ -80,7 +82,8 @@ export default {
     components: {
         Product,
         Cart,
-        Flash
+        Flash,
+        Loading
     }
 }
 </script>
