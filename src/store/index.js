@@ -10,6 +10,7 @@ const actions = {
             .then(prods => {
                 commit('setProducts', prods.data)
                 commit('setPages', prods.links)
+                commit('setIncluded', prods.included)
             })
     },
 
@@ -82,6 +83,10 @@ const mutations = {
         state.products = prods
     },
 
+    setIncluded (state, included) {
+        state.included = included
+    },
+
     setPages (state, pages) {
         state.pages = pages
     },
@@ -115,6 +120,18 @@ const mutations = {
     }
 }
 
+const getters = {
+    main_images (state) {
+        let mi = state.included.main_images || []
+        return Vue.$_.keyBy(mi, 'id')
+    },
+
+    files (state) {
+        let files = state.included.files || []
+        return Vue.$_.keyBy(files, 'id')
+    }
+}
+
 Vue.use(Vuex)
 
 const state = {
@@ -123,6 +140,7 @@ const state = {
     cartItems: [],
     cartMeta: {},
     products: [],
+    included: [],
     pages: [],
     errors: [],
     flashes: [],
@@ -134,7 +152,8 @@ const state = {
 const store = new Vuex.Store({
     state,
     actions,
-    mutations
+    mutations,
+    getters
 })
 
 export default store

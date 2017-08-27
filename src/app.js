@@ -4,7 +4,21 @@ import Vue from 'vue'
 import App from './components/Root.vue'
 
 import store from './store/index.js'
-import Shop from './cart.js'
+import Shop from './shop.js'
+
+import keyBy from 'lodash/keyBy'
+
+Vue.use({
+    install (Vue, opt) {
+        Vue.prototype.$_ = {
+            keyBy
+        }
+
+        Vue.$_ = {
+            keyBy
+        }
+    }
+})
 
 Vue.use({
     install (Vue, opt) {
