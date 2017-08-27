@@ -28,6 +28,18 @@ const actions = {
             })
     },
 
+    removeItem({ commit }, productId) {
+        console.info('removeItem ~~ productId', productId)
+    },
+
+    incrementItem({ commit }, productId) {
+
+    },
+
+    decrementItem({ commit }, productId) {
+
+    },
+
     getCartItems ({ commit }) {
         Vue.$shop.getCartItems()
             .then(cart => {

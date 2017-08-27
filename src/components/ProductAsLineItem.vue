@@ -1,15 +1,15 @@
 <template lang="pug">
     tr.productAsLineItem
         td
-            a.productAsLineItem-removeControl x
-            span.productAsLineItem-name {{ product.name }}
+            a.productAsLineItem-removeControl(@click="$emit('removeItem', id)") x
+            span.productAsLineItem-name {{ name }}
 
         td
             .has-text-centered {{ quantity }}
 
             .productAsLineItem-controls
-                a.productAsLineItem-quantityControl() -
-                a.productAsLineItem-quantityControl() +
+                a.productAsLineItem-quantityControl(@click="$emit('decrementItem', id)") -
+                a.productAsLineItem-quantityControl(@click="$emit('incrementItem', id)") +
 
         td.has-text-right {{ price }}
 </template>
@@ -23,7 +23,8 @@
         },
 
         props: [
-            'product',
+            'id',
+            'name',
             'quantity',
             'price'
         ]

@@ -7,7 +7,14 @@
                     th.has-text-centered Quantity
                     th.has-text-right Price
             tbody
-                product-as-line-item(v-for="product in cartProducts", :product="product", :quantity="product.quantity", :price="product.unit_price.amount")
+                product-as-line-item(v-for="product in cartProducts",
+                    @incrementItem="$emit('incrementItem', arguments[0])",
+                    @decrementItem="$emit('decrementItem', arguments[0])",
+                    @removeItem="$emit('removeItem', arguments[0])",
+                    :id="product.id",
+                    :name="product.name",
+                    :quantity="product.quantity",
+                    :price="product.unit_price.amount")
 
             tfoot
                 tr
@@ -27,6 +34,8 @@
     import ProductAsLineItem from './ProductAsLineItem.vue'
 
     export default {
+        name: 'cart',
+
         data () {
             return {
 

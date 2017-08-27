@@ -7,7 +7,12 @@
 
         .section
             .container
-                cart(:products="cartItems", :meta="cartMeta")
+                cart(
+                    @incrementItem="incrementItem",
+                    @decrementItem="decrementItem",
+                    @removeItem="removeItem",
+                    :products="cartItems",
+                    :meta="cartMeta")
 
         .section
             .container
@@ -33,8 +38,11 @@ export default {
 
     methods: {
         ...mapActions([
-            'addToCart'
-        ])
+            'addToCart',
+            'incrementItem',
+            'decrementItem',
+            'removeItem'
+        ]),
     },
 
     computed: {
